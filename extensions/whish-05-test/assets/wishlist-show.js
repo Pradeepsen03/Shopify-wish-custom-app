@@ -121,9 +121,6 @@ function addToWishlist(productId, customer) {
   console.log("gooood", customer);
   fetch(`https://shopify-wish-custom-app.onrender.com/api/save-wishlist`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: JSON.stringify({
       shop: wish05ShopUrl,
       productId: productId,
