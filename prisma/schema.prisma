@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Note that some adapters may set a maximum length for the String type by default, please ensure your strings are long
+// enough when changing adapters.
+// See https://www.prisma.io/docs/orm/reference/prisma-schema-reference#string for more information
+datasource db {
+  provider = "postgresql"
+  //url      = "postgresql://postgres:root@123@localhost:5432/shopify-demo?schema=public"
+  url      = "postgresql://shopify_yvat_user:YUmD9lA2BYVrVgIcy1lfWKl4tx6nSJWU@dpg-ct4qp93qf0us73835530-a.oregon-postgres.render.com/shopify_yvat"
+}
+
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+}
+
+model Wishlist {
+  id          Int    @id  @default(autoincrement())
+  cusId       String   
+  productId   BigInt   @unique             
+  createdAt   DateTime @default(now())      
+  updatedAt   DateTime @updatedAt           
+}
+

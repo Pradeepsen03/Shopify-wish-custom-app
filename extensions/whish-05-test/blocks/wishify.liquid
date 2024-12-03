@@ -1,0 +1,80 @@
+
+
+
+
+<div class="wishiy-05-container-butt" style="text-align: {{ block.settings.button_alignment }}">
+  <button
+    id="wishlist-button"
+    style="
+      background-color: {{ block.settings.button_background_color }};
+      color: {{ block.settings.button_text_color }};
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    "
+    class="add-05-test"
+    onclick="addToWishlist({{ product.id }}, '{{ customer.email }}')"
+  >
+    {{ block.settings.button_text }}
+  </button>
+</div>
+
+<script src="{{ 'wishlist-show.js' | asset_url }}" defer></script>
+
+<style>
+
+  .add-05-test:hover{
+    background-color: red;
+    transform: scale(1);
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "Wishlist Button",
+  "target": "section",
+  "templates": ["product"],
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Add to Wishlist"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button Background Color",
+      "default": "#ff6f61"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "radio",
+      "id": "button_alignment",
+      "label": "Button Alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

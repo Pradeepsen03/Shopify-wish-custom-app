@@ -1,0 +1,158 @@
+<button class="btn-05-test btn-open-05-test">
+  <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="currentColor"
+  viewBox="0 -1 16 16"
+  class="size-5 transition-all duration-300 w-5 h-5 text-[var(--wln-button-text-color)] group-hover:text-[var(--wln-button-hover-text-color)]"
+  style="width: 16px;"
+>
+  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"></path>
+</svg>
+</button>
+<div class="modal-05-test hidden-05-test">
+  <div id="wishiy-05-container">
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
+      <div style="width: 100%;">
+        <h1 style="font-size: 1.25rem; font-weight: 600;">My Wishlist</h1>
+        <button class="btn-close-test-05">⨉</button>
+      </div>
+      <div style="display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+        <table style="width: 100%; max-width: 100%; background-color: transparent; white-space: nowrap;">
+          <thead style="background-color: #f3f4f6;">
+            <tr style="border-bottom: 1px solid #d1d5db; border-color: #d1d5db;">
+              <th style="padding: 0.75rem 1.5rem; text-align: left;">Image</th>
+              <th style="padding: 0.75rem 1.5rem; text-align: left;">Product</th>
+              <th style="padding: 0.75rem 1.5rem; text-align: left;">Amount</th>
+              <th style="padding: 0.75rem 1.5rem; text-align: left;">Status</th>
+              <th style="padding: 0.75rem 1.5rem; text-align: left;">Remove</th>
+            </tr>
+          </thead>
+          <tbody id="wishiy-05-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay-05-test hidden-05-test"></div>
+
+<div id="wishiy-id-cus" style="display: none;">{{ customer.email }}</div>
+
+<script src="{{ 'wishlist-show.js' | asset_url }}" defer></script>
+<style>
+.modal-05-test {
+  gap: 0.4rem;
+  padding: 2.6rem;
+  width: 80%;
+  min-height: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%) scale(0.9); /* Start slightly above and scaled down */
+  opacity: 0; /* Initially hidden */
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 60px 104px 60px rgba(0, 0, 0, 0.404);
+  overflow-y: scroll;
+  transition: all 500ms ease-out; /* Smooth opening animation */
+}
+
+.modal-05-test:not(.hidden-05-test) {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1); /* Fully visible and centered */
+}
+
+.overlay-05-test {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 999;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Smooth fade-in */
+}
+
+.overlay-05-test:not(.hidden-05-test) {
+  opacity: 1; /* Fully visible */
+}
+
+  .btn-close-test-05 {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+  }
+  .btn-05-test{
+    margin-top: 12px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-05-test:hover{
+   transform: scale(1.5);
+  }
+
+  .hidden-05-test {
+    display: none;
+  }
+  .remove-05-test:hover{
+    background-color: red;
+    border: none;
+    color: white;
+    transform: scale(1.5);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Wishlist Show",
+  "target": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Add to Wishlist new"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button Background Color",
+      "default": "#ff6f61"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "radio",
+      "id": "button_alignment",
+      "label": "Button Alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
