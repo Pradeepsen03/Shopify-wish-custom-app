@@ -1,5 +1,6 @@
 import { json } from "@remix-run/node";
 import { wishDelete } from "../model/wishDelete.server";
+import { getAccessToken } from "../model/getAccessToken.server";
 
 
 
