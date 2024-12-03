@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "3bfaa475a6bde00b1bd599c57f089dc8"
-application_url = "https://somerset-treasury-baseball-attract.trycloudflare.com"
+application_url = "https://broadcasting-headquarters-commitments-mile.trycloudflare.com"
 embedded = true
 name = "Wish-05-test"
 handle = "wish-05-test"
@@ -19,9 +19,9 @@ scopes = "write_products,read_customers"
 
 [auth]
 redirect_urls = [
-  "https://somerset-treasury-baseball-attract.trycloudflare.com/auth/callback",
-  "https://somerset-treasury-baseball-attract.trycloudflare.com/auth/shopify/callback",
-  "https://somerset-treasury-baseball-attract.trycloudflare.com/api/auth/callback"
+  "https://broadcasting-headquarters-commitments-mile.trycloudflare.com/auth/callback",
+  "https://broadcasting-headquarters-commitments-mile.trycloudflare.com/auth/shopify/callback",
+  "https://broadcasting-headquarters-commitments-mile.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

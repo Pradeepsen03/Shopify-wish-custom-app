@@ -6,12 +6,8 @@ console.log("cuu", cus_id);
 
 function ShowwishList(){
   if (cus_id) {
-    fetch(`http://localhost:5000/api/get-wishlist?shop=${wish05ShopUrl}&id=${cus_id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Shopify-Access-Token": "shpua_7391745555fc89d7745f97a063464f5b",
-      },
+    fetch(`https://shopify-wish-custom-app.onrender.com/api/get-wishlist?shop=${wish05ShopUrl}&id=${cus_id}`, {
+      method: "GET"
     })
       .then((response) => {
         console.log("res", response);
@@ -83,7 +79,7 @@ function deleteproductWish(id) {
   const productId = id.split("/").pop();
   console.log("real one", productId);
 
-  fetch(`http://localhost:5000/api/delete-wish`, {
+  fetch(`https://shopify-wish-custom-app.onrender.com/api/delete-wish`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -126,7 +122,7 @@ openModalBtn.addEventListener("click", openModal);
 
 function addToWishlist(productId, customer) {
   console.log("gooood", customer);
-  fetch(`http://localhost:5000/api/save-wishlist`, {
+  fetch(`https://shopify-wish-custom-app.onrender.com/api/save-wishlist`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

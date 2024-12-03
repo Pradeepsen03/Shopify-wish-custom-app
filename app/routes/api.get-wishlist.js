@@ -107,10 +107,13 @@ export const loader = async ({ request }) => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": "*", 
+          "x-shopify-access-token":getToken[0].accessToken,
+          "Access-Control-Allow-Headers": "Content-Type, x-shopify-access-token"
         },
-      },
+      }
     );
+    
   } catch (error) {
     console.error("Loader Error:", error);
     return json({ error: "An unexpected error occurred." }, { status: 500 });
