@@ -10,7 +10,7 @@ export const action = async ({ request }) => {
   if (!shop && !productId && !cusId) {
     return json({ error: "Shop, Product ID and Customer  are required." }, { status: 400 });
   }
-  
+
   const token = { shop };
   const getToken = await getAccessToken(token);
   
@@ -23,7 +23,8 @@ export const action = async ({ request }) => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*", 
         "x-shopify-access-token":getToken[0].accessToken,
-        "Access-Control-Allow-Headers": "Content-Type, x-shopify-access-token"
+        "Access-Control-Allow-Headers": "Content-Type, x-shopify-access-token",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS"
       },
     }
   );
