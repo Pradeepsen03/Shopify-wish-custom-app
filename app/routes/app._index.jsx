@@ -13,12 +13,13 @@ import {
   Bleed,
   Layout,
 } from "@shopify/polaris";
+import { Redirect } from "@shopify/app-bridge/actions";
 import { useState, useCallback } from "react";
 import { useLoaderData } from "@remix-run/react";
 import { PlusIcon } from "@shopify/polaris-icons";
 import { json } from "@remix-run/node";
 import { authenticate } from "../shopify.server";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { useAppBridge } from "@shopify/app-bridge-react";
 
 export const loader = async ({ request }) => {
@@ -53,7 +54,7 @@ export default function Index() {
   const { serializedData } = useLoaderData();
   console.log("Serialized Data", serializedData);
   const shopify = useAppBridge();
-  console.log("shopify",shopify)
+  console.log("shopify", shopify);
 
   const groupedData = groupDataByShopId(serializedData);
 
@@ -71,6 +72,15 @@ export default function Index() {
     },
     [sortedRows],
   );
+
+  const handleRedirect = () => {
+    console.log("click")
+    const redirect = Redirect.create(shopify);
+    redirect.dispatch(
+      Redirect.Action.ADMIN_PATH,
+      "/themes/current/editor" 
+    );
+  };
 
   return (
     <Page title="Dashboard">
@@ -99,7 +109,7 @@ export default function Index() {
           </BlockStack>
         </Layout.Section>
         <Layout.Section>
-          <Grid columns={{ xs: 1, sm: 4, md: 2, lg: 6, xl: 6 }}>
+          <Grid columns={{ xs: 1, sm: 1, md: 2, lg: 2, xl: 2 }}>
             <LegacyCard>
               <Grid.Cell>
                 <DataTable
@@ -120,7 +130,12 @@ export default function Index() {
                   <Text as="h2" variant="headingSm">
                     Configurations
                   </Text>
-                  <Button icon={PlusIcon} variant="primary" tone="critical">
+                  <Button
+                    icon={PlusIcon}
+                    variant="primary"
+                    tone="critical"
+                    onClick={handleRedirect}
+                  >
                     Configure Wishify
                   </Button>
                 </InlineGrid>
