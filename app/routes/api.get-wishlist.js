@@ -7,7 +7,7 @@ export const loader = async ({ request }) => {
     const url = new URL(request.url);
     const shop = url.searchParams.get("shop");
     const cus_id = url.searchParams.get("id");
-
+  console.log("i shop",shop)
     if (!shop) {
       return json({ error: "Shop parameter is required." }, { status: 400 });
     }
@@ -107,7 +107,7 @@ export const loader = async ({ request }) => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": shop, 
+          "Access-Control-Allow-Origin": `https://${shop}`, 
           "x-shopify-access-token":getToken[0].accessToken,
           "Access-Control-Allow-Headers": "Content-Type, x-shopify-access-token"
         },
