@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "3bfaa475a6bde00b1bd599c57f089dc8"
-application_url = "https://portfolio-promising-animals-vampire.trycloudflare.com"
+application_url = "https://lady-music-caps-packed.trycloudflare.com"
 embedded = true
 name = "Wish-05-test"
 handle = "wish-05-test"
@@ -19,9 +19,9 @@ scopes = "write_products,read_customers"
 
 [auth]
 redirect_urls = [
-  "https://portfolio-promising-animals-vampire.trycloudflare.com/auth/callback",
-  "https://portfolio-promising-animals-vampire.trycloudflare.com/auth/shopify/callback",
-  "https://portfolio-promising-animals-vampire.trycloudflare.com/api/auth/callback"
+  "https://lady-music-caps-packed.trycloudflare.com/auth/callback",
+  "https://lady-music-caps-packed.trycloudflare.com/auth/shopify/callback",
+  "https://lady-music-caps-packed.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
