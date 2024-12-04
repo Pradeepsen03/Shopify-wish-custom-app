@@ -23,7 +23,7 @@ export const action = async ({ request }) => {
     {
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": shop,
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, x-shopify-access-token",
         "x-shopify-access-token": getToken[0].accessToken,
