@@ -4,6 +4,7 @@ export async function WishShow(data) {
     try {
         const wishShow = await prisma.wishlist.findMany({
             where: {
+                shop: data.shop,
                 cusId: data.cus_id,
             },
         });

@@ -21,7 +21,7 @@ export const loader = async ({ request }) => {
     console.log("appka Token", getToken[0].accessToken);
     const graphQLEndpoint = `https://testnewapp12.myshopify.com/admin/api/2024-01/graphql.json`;
 
-    const data = { cus_id };
+    const data = { shop,cus_id };
     const WishShowData = await WishShow(data);
 
     const WishShowProduct = await Promise.all(
@@ -107,7 +107,7 @@ export const loader = async ({ request }) => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*", 
+          "Access-Control-Allow-Origin": shop, 
           "x-shopify-access-token":getToken[0].accessToken,
           "Access-Control-Allow-Headers": "Content-Type, x-shopify-access-token"
         },

@@ -34,6 +34,7 @@ model Session {
 
 model Wishlist {
   id          Int    @id  @default(autoincrement())
+  shop        String?
   cusId       String   
   productId   BigInt   @unique             
   createdAt   DateTime @default(now())      

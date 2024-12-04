@@ -4,8 +4,10 @@ export async function wishDelete(data) {
     try {
         const wish = await prisma.wishlist.delete({
             where: {
-                productId:data.productId,
+                shop:data.shop,
                 cusId: data.cusId,
+                productId:data.productId,
+                
               },
         });
         console.log("Wishlist entry deleted:", wish);

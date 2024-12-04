@@ -4,6 +4,7 @@ export async function WishCreate(data) {
     try {
         const wish = await prisma.wishlist.create({
             data: {
+                shop:data.shop,
                 cusId: data.cusId,       
                 productId: data.productId, 
             },
